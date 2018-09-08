@@ -27,7 +27,9 @@
               "client/src/assets"
             ],
             "styles": [
-              "client/src/styles.scss"
+              "client/src/styles.scss",
+              "./node_modules/weathericons/css/weather-icons.min.css",
+              "./node_modules/weathericons/css/weather-icons-wind.min.css"
             ],
             "scripts": []
           },
