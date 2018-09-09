@@ -1,3 +1,27 @@
-<p>
-  dashboard works!
-</p>
+<div class="dashboard-container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="toogleNav()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Weather App</h1>
+  </mat-toolbar>
+  <mat-drawer-container class="workspace-container">
+    <mat-drawer  class="sidenav-container"
+                 mode="over"
+                 [opened]="isSideNavOpened">
+      <div class="menu">
+        <mat-list>
+          <a mat-list-item
+             *ngFor="let menu of menusList"
+             matTooltip="{{menu.label}}"
+             [routerLinkActiveOptions]="{exact: true}"
+             routerLink="{{menu.link}}"
+             routerLinkActive="active-link">
+            <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>
+          </a>
+        </mat-list>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
