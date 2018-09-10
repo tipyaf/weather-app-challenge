@@ -1,13 +1,14 @@
 import {
   MatButtonModule,
   MatCardModule,
+  MatGridListModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule,
-  MatTooltipModule,
-}
-  from '@angular/material';
+  MatTooltipModule
+} from '@angular/material';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,10 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatListModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatGridListModule,
+    MatSnackBarModule
 
   ],
   exports: [
@@ -33,7 +37,10 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatListModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatGridListModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule {

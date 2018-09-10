@@ -1,3 +1,5 @@
-<p>
-  weather works!
-</p>
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let widget of widgetList">
+    <app-widget [data]="widget"></app-widget>
+  </mat-grid-tile>
+</mat-grid-list>

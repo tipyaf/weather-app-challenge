@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import 'hammerjs';// used by material
+import 'hammerjs'; // used by material
 
 if (environment.production) {
   enableProdMode();
