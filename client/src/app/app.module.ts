@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
-
-//Modules
+// Modules
 import { AppRouterModule } from './app.routes';
 import { DashboardModule } from './dashboard/dashboard.module';
 
-//Components
+// Components
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -18,11 +19,14 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRouterModule,
-    DashboardModule
+    NgxSpinnerModule,
+    DashboardModule,
   ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

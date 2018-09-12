@@ -1,3 +1,25 @@
-<p>
-  settings works!
-</p>
+<mat-toolbar class="settings-toolbar">
+  <mat-toolbar-row>
+    <form name="addForm" [formGroup]="addForm">
+      <mat-form-field >
+        <input matInput placeholder="City name" formControlName="search">
+      </mat-form-field>
+      <button mat-button mat-raised-button color="primary"
+              (click)="addWidget('weatherWidgets')"
+              [disabled]="addForm.invalid">
+        Add widget
+      </button>
+    </form>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+<mat-list>
+  <mat-list-item *ngFor="let widget of widgetsList">
+    <mat-icon matListIcon>folder</mat-icon>
+    <h3 matLine> {{widget.city}} </h3>
+    <p matLine>
+  </mat-list-item>
+</mat-list>
+

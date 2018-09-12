@@ -10,6 +10,7 @@ const dashboardRoutes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
+      {path: '', redirectTo: 'weather', pathMatch: 'full'},
       {
         path: 'weather',
         component: WeatherComponent

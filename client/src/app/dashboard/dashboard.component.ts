@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
         icon: 'wb_sunny',
         link: '/dashboard/weather'
       }
-    ]
+    ];
   }
 
   toogleNav() {
