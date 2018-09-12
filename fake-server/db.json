@@ -1,12 +1,3 @@
 {
-  "weatherWidgets": [
-    {
-      "id": 1,
-      "owmId": 2643743
-    },
-    {
-      "id": 2,
-      "owmId": 524901
-    }
-  ]
+  "weatherWidgets": []
 }

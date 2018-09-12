@@ -6,7 +6,8 @@
     "start": "ng serve",
     "prod:start": "ng serve --prod",
     "build": "ng build",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
