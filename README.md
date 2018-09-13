@@ -43,7 +43,6 @@ $ bash scripts/reset.sh
 - I choose to create configurations settings with fake API and add weather data: I would have choice to evoluate to a configurable widgets in app.
 - I choose to split as possible code in app: The architecture of project is thought with parent, child, brother concept. The services serve to manage and distriribute data to parents who distribute to children.  
 - I choose to do dashbord like child of app but dasboard is parent of the rest. We can easly add a login page and manage settings by users... in the future.
-- I skip test ... no more time.
 - I skip to create a real API server with Nodejs because I prefer to be sure that's will run everywhere. (Docker?!) ... no more time. **But json-server is great !** 
 
 ***Sorry for my English ;) ...***
