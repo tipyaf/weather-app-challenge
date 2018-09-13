@@ -6,8 +6,11 @@ export const environment = {
   production: false,
   apis: {
     owm: {
-      urlBase: 'api.openweathermap.org/data/2.5/weather',
+      urlBase: 'http://api.openweathermap.org/data/2.5',
       key: 'bf24d4ebdd1fd36ff8a1a73369906a37'
+    },
+    server: {
+      urlBase: 'http://localhost:3000'
     }
   }
 };

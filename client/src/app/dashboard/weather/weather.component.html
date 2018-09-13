@@ -1,0 +1,12 @@
+<div class="body-container">
+  <div class="body-content">
+    <mat-grid-list cols="4" rowHeight="180px">
+      <mat-grid-tile *ngFor="let widget of widgetsList"
+                     [colspan]="1"
+                     [rowspan]="2">
+        <app-widget [data]="widget"></app-widget>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+

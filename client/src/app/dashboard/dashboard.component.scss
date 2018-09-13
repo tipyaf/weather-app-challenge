@@ -1,0 +1,36 @@
+@import '../../theme/_shared/variables/index';
+@import '../../theme/_shared/variables/backgrounds';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+
+  .workspace-container {
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhaVCDh2EGzw4C3LUXpHpyeoQ50lnB-fh4nbzPZDisR6CubHsZ") no-repeat;
+    background-size: cover ;
+    flex: 1;
+
+    .sidenav-container {
+      background-color: $brand-primary;
+      color: $white;
+    }
+  }
+
+  .menu {
+    a, a:visited, a:focus {
+      text-decoration: none;
+      color: $white;
+      outline: none;
+    }
+
+    .active-link {
+      color: $brand-secondary !important;
+    }
+  }
+}

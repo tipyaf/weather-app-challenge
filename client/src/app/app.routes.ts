@@ -3,11 +3,11 @@
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  // {path: 'dashboard', component: FaqComponent},
+  {path: '', redirectTo: '/dashboard/weather', pathMatch: 'full'},
+  {path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
 
-  // otherwise redirect to home
-  {path: '**', redirectTo: '/dashboard'}
+  // otherwise redirect to dashboard
+  {path: '**', redirectTo: '/dashboard/weather'}
 ];
 
 export const AppRouterModule = RouterModule.forRoot(appRoutes);

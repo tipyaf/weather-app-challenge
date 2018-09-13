@@ -1,0 +1,13 @@
+@import '../../../theme/_shared/variables/backgrounds';
+
+:host {
+  .settings-toolbar {
+    padding: 25px !important;
+    height: 105px;
+  }
+
+  .body-content {
+    background-color: $bg-transparent;
+    padding: 10px;
+  }
+}
