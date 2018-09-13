@@ -2,16 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Modules
 import { DashboardRouterModule } from './dashboard.routes';
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../_shared/modules/material/material.module';
 import { WeatherComponent } from './weather/weather.component';
 import { SettingsComponent } from './settings/settings.component';
-import { WidgetComponent } from './weather/_shared/components/widget/widget.component';
+import { WidgetComponent } from './weather/widget/widget.component';
 
-// services
+// Pipes
+import { PipeModule } from '../_shared/modules/pipe/pipe.module';
+
+
+// Services
 import { OpenWeatherMapService } from './_shared/services/open-weather-map.service';
-import { UserSettingsService } from './_shared/services/user-settings.service';
+import { DashboardSettingsService } from './_shared/services/dashboard-settings.service';
+
+
 
 
 @NgModule({
@@ -26,10 +33,11 @@ import { UserSettingsService } from './_shared/services/user-settings.service';
     FormsModule,
     ReactiveFormsModule,
     DashboardRouterModule,
-    MaterialModule
+    MaterialModule,
+    PipeModule
   ],
   providers: [
-    UserSettingsService,
+    DashboardSettingsService,
     OpenWeatherMapService
   ]
 })

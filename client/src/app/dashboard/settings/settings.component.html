@@ -1,25 +1,34 @@
-<mat-toolbar class="settings-toolbar">
-  <mat-toolbar-row>
-    <form name="addForm" [formGroup]="addForm">
-      <mat-form-field >
-        <input matInput placeholder="City name" formControlName="search">
+<div class="body-container">
+  <div class="body-header">
+    <mat-toolbar class="settings-toolbar">
+      <form name="addForm" (submit)="addWidget('weatherWidgets')" [formGroup]="addForm">
+        <mat-form-field>
+          <input matInput placeholder="City to add" formControlName="search">
+        </mat-form-field>
+        <button type="submit" mat-button mat-raised-button color="primary"
+                [disabled]="addForm.invalid">
+          Add widget
+        </button>
+      </form>
+    </mat-toolbar>
+  </div>
+
+  <div class="body-content" *ngIf="widgetsList.length > 0">
+    <mat-list>
+      <mat-form-field>
+        <input matInput placeholder="Search widget" [(ngModel)]="widgetSearch">
       </mat-form-field>
-      <button mat-button mat-raised-button color="primary"
-              (click)="addWidget('weatherWidgets')"
-              [disabled]="addForm.invalid">
-        Add widget
-      </button>
-    </form>
-  </mat-toolbar-row>
+      <mat-list-item class="item" *ngFor="let widget of widgetsList | filter: widgetSearch: 'cityName'">
+        <h3 matLine> {{widget.getCityName()}} </h3>
+        <i class="{{widget.getIcon()}}"></i>
+        <p>{{widget.getTemperature()}} °C</p>
+        <button type="button" mat-icon-button color="accent" (click)="removeWidget('weatherWidgets', widget.getId())">
+          <mat-icon class="icon">delete_forever</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
 
-</mat-toolbar>
-
-
-<mat-list>
-  <mat-list-item *ngFor="let widget of widgetsList">
-    <mat-icon matListIcon>folder</mat-icon>
-    <h3 matLine> {{widget.city}} </h3>
-    <p matLine>
-  </mat-list-item>
-</mat-list>
 

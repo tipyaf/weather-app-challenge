@@ -1,9 +1,15 @@
 $white: #ffffff;
 $red: #C32E2C;
 $blue: #3f51b5;
-$blue-secondary: #1C77C3;
+$blue-secondary: #4d7aa3;
 $grey-light: #e5e5e5;
 $yellow: #F39237;
+$black: #000000;
 
 $brand-primary: $blue;
 $brand-secondary: #fffa23;
+
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: linear-gradient($direction, $color-stops);
+}

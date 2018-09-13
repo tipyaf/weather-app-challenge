@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-
 import * as _ from 'lodash';
 
 @Injectable({
@@ -24,21 +23,24 @@ export class OpenWeatherMapService {
     const params = new HttpParams()
       .set('APPID', this.getKey())
       .set('q', cityName)
-      .set('units', 'metrics');
+      .set('units', 'metric');
     const url = `${this.getUrlBase()}/weather`;
 
-    return this.http.get<any>(url, {params});
+    return this.http.get<any>(url, {params})
+      .toPromise();
   }
 
   getByGroup(idsList) {
-    const concatIdsList = _.join(idsList, ',');
-    const params = new HttpParams()
-      .set('id', concatIdsList)
-      .set('units', 'metric')
-      .set('APPID', this.getKey());
+    if (!_.isEmpty(idsList)) { // no request if idslist is empty.
+      const concatIdsList = _.join(idsList, ','); // create concat string list of ids for query params
+      const params = new HttpParams()
+        .set('id', concatIdsList)
+        .set('units', 'metric')
+        .set('APPID', this.getKey());
 
-    const url = `${this.getUrlBase()}/group`;
-    return this.http.get<any>(url, {params})
-      .toPromise();
+      const url = `${this.getUrlBase()}/group`;
+      return this.http.get<any>(url, {params})
+        .toPromise();
+    }
   }
 }

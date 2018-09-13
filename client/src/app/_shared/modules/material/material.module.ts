@@ -5,7 +5,8 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatSidenavModule, MatSnackBarModule,
+  MatSidenavModule,
+  MatSnackBarModule,
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserSettingsService } from '../../../_shared/services/user-settings.service';
 import { OpenWeatherMapService } from '../../../_shared/services/open-weather-map.service';
 import { WeatherWidget } from '../../../_shared/models/weather-widget.model';
+import { DashboardSettingsService } from '../../../_shared/services/dashboard-settings.service';
 import { throwError } from 'rxjs';
 import * as _ from 'lodash';
 
@@ -14,35 +14,12 @@ export class WeatherService {
   weatherList: any = [];
   weatherWidgetList: any = [];
 
-  constructor(private userSettingsService: UserSettingsService,
-              private openWeatherMapService: OpenWeatherMapService
-  ) {
+  constructor(private dashboardSettingsService: DashboardSettingsService,
+              private openWeatherMapService: OpenWeatherMapService) {
   }
-
 
   //////////
-  // Datas
-
-  getSettings() {
-    return this.userSettingsService.getWidgetsByType('weatherWidgets');
-  }
-
-  getWeatherList() {
-    const idsList = _.map(this.settingsList, 'owmId');
-    return this.openWeatherMapService.getByGroup(idsList)
-      .then(data => data.list);
-  }
-
-  ///////////
-  // Widgets
-
-  async getWeatherWidgets(isForceRefresh?: boolean): Promise<WeatherWidget[]> {
-    if (_.isEmpty(this.weatherWidgetList) || isForceRefresh) { // if it not cached load data
-      await this.loadData();
-      this.createWidgetList();
-    }
-    return this.weatherWidgetList;
-  }
+  // Data
 
   async loadData() {
     this.settingsList = await this.getSettings() // get settings
@@ -50,17 +27,56 @@ export class WeatherService {
         return throwError(error);
       });
 
-    this.weatherList = await this.getWeatherList() // get weather
-      .catch((error) => {
-        return throwError(error);
-      });
+    if (!_.isEmpty(this.settingsList)) {
+      // if settings list is empty (because no settings added for the first time of user on app) don't call openWeatherApi
+      this.weatherList = await this.getWeatherList() // get weather
+        .catch((error) => {
+          return throwError(error);
+        });
+    } else {
+      return [];
+    }
   }
 
+  getSettings() {
+    return this.dashboardSettingsService.getWidgetsByType('weatherWidgets');
+  }
+
+  getWeatherList() {
+    const idsList = _.map(this.settingsList, 'owmId');
+    return this.openWeatherMapService.getByGroup(idsList)
+      .then(settings => settings.list);
+  }
+
+
+  ///////////
+  // Widgets
+
+  async getWeatherWidgets(isForceRefresh?: boolean): Promise<WeatherWidget[]> {
+    if (_.isEmpty(this.weatherWidgetList) || isForceRefresh) { // if it not cached ...
+      await this.loadData();
+      this.createWidgetList();
+    }
+    return this.weatherWidgetList;
+  }
+
+  hasWidgetByCityId(id) {
+    return _.some(this.weatherWidgetList, {cityId: id});
+  }
+
+
+
   ////////
-  // manage widget data
+  // Manage widget data
 
   addWidget(widget: WeatherWidget) {
     this.weatherWidgetList.push(widget);
+  }
+
+  removeWidgetById(id) {
+    this.weatherWidgetList = _.filter(this.weatherWidgetList, (widget) => {
+      return widget.id !== id;
+    });
   }
 
   createWidgetList() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,17 @@ export class DashboardComponent implements OnInit {
   isSideNavOpened: boolean;
   menusList: any = [];
 
-  constructor() { }
+  constructor(private router: Router) {
+    // listen router to close menu when router changes
+    this.router.events
+      .subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.closeSideNav();
+        }
+      });
+  }
+
+  /////////////
 
   ngOnInit() {
     this.isSideNavOpened = false;
@@ -27,8 +38,13 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
-  toogleNav() {
-    this.isSideNavOpened = !this.isSideNavOpened;
+  //////////////
+
+  closeSideNav() {
+    this.isSideNavOpened = false;
   }
 
+  toggleNav() {
+    this.isSideNavOpened = !this.isSideNavOpened;
+  }
 }
