@@ -82,7 +82,7 @@ export class SettingsComponent implements OnInit {
       });
   }
 
-  removeWidget(type: string, id: number) {
+  removeWidget(type: string, id: string) {
     this.startLoading();
     this.dashboardSettingsService.removeWidget(type, id)
       .then(() => {

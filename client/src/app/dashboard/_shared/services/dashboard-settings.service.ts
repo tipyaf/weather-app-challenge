@@ -11,27 +11,20 @@ export class DashboardSettingsService {
   constructor(private http: HttpClient) {
   }
 
-  getUrlBase() {
-    return environment.apis.server.urlBase;
-  }
-
   getWidgetsByType(type: string) {
-    const urlBase = this.getUrlBase();
-    const url = `${urlBase}/${type}`; // currently type = 'weatherWidgets'
+    const url = `/api/widgets/${type}`; // currently type = 'weatherWidgets'
     return this.http.get<any>(url)
       .toPromise();
   }
 
   addWidget(type, weatherCityId: number) {
-    const urlBase = this.getUrlBase();
-    const url = `${urlBase}/${type}`; // currently type = 'weatherWidgets'
-    return this.http.post<any>(url, {id: null, owmId: weatherCityId})
+    const url = `/api/widgets/${type}`; // currently type = 'weatherWidgets'
+    return this.http.post<any>(url, {owmId: weatherCityId})
       .toPromise();
   }
 
-  removeWidget(type, id: number) {
-    const urlBase = this.getUrlBase();
-    const url = `${urlBase}/${type}/${id}`; // currently type = 'weatherWidgets'
+  removeWidget(type, id: string) {
+    const url = `/api/widget/${type}/${id}`; // currently type = 'weatherWidgets'
     return this.http.delete<WeatherWidget>(url)
       .toPromise();
   }

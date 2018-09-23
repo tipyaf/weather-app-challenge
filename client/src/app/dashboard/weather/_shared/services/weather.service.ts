@@ -22,7 +22,10 @@ export class WeatherService {
   // Data
 
   async loadData() {
-    this.settingsList = await this.getSettings() // get settings
+    await this.getSettings()
+      .then( (list) => {
+        this.settingsList = list;
+      })// get settings
       .catch((error) => {
         return throwError(error);
       });
@@ -89,7 +92,7 @@ export class WeatherService {
 
   newWidgetModel(widget, weather) {
     return new WeatherWidget(
-      widget.id,
+      widget._id,
       weather.name,
       weather.id,
       weather.main.temp,
