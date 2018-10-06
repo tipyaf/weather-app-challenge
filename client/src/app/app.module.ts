@@ -12,11 +12,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 // Components
 import { AppComponent } from './app.component';
 
-
 @NgModule({
   declarations: [
     AppComponent
-
   ],
   imports: [
     BrowserModule,
@@ -24,7 +22,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRouterModule,
     NgxSpinnerModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

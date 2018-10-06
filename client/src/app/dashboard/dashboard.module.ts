@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Modules
 import { DashboardRouterModule } from './dashboard.routes';
-import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../_shared/modules/material/material.module';
+
+// Components
+import { DashboardComponent } from './dashboard.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WidgetComponent } from './weather/widget/widget.component';

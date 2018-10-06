@@ -7,7 +7,6 @@ import * as _ from 'lodash';
 export class FilterPipe implements PipeTransform {
 
   transform(items: any[], value: any, key?: any): any {
-    console.log(items, value);
     if (!items || !value) {
       return items;
     } else if (key) { // if is key match item with value
